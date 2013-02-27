@@ -7,7 +7,12 @@ require 'less'
 class Pugvine < Sinatra::Application
 
   get '/' do
-    @name = fetch_tweets
+    @name = fetch_tweets('pug')
+    erb :index, :locals => {:name => @name}
+  end
+
+  get '/corgis' do
+    @name = fetch_tweets('corgi')
     erb :index, :locals => {:name => @name}
   end
 
@@ -15,8 +20,8 @@ class Pugvine < Sinatra::Application
     less :pugvine
   end
 
-  def fetch_tweets
-    content = open("http://search.twitter.com/search.json?q=vine.co%20pug&rpp=9&result_type=recent&include_entities=true").read
+  def fetch_tweets(term)
+    content = open("http://search.twitter.com/search.json?q=vine.co%20#{term}&rpp=9&result_type=recent&include_entities=true").read
     return @parsed = JSON.parse(content)
   end
 
