@@ -2,9 +2,12 @@
 <html>
 <body>
 
-<% name['results'].each do |item| %>
-  <%= item['text'] %><br />
+<% name['results'].each_with_index do |item, index| %>
+  <%= index %>
+  <%= item['text'] %> -- <%= item['created_at'] %><br />
 <% end %>
+
+SNOW CONTEXT = <%= snows %>
 
 <p id="demo">Click the button to get your coordinates:</p>
 <button onclick="getLocation()">Try It</button>
@@ -20,7 +23,7 @@ function getLocation()
                           }
                           function showPosition(position)
                             {
-                                x.innerHTML="Latitude: " + position.coords.latitude + 
+                                x.innerHTML="Latitude: " + position.coords.latitude +
                                     "<br>Longitude: " + position.coords.longitude;
                                   }
 </script>
