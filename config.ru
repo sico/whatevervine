@@ -3,5 +3,5 @@ require 'bundler'
 
 Bundler.require
 
-require './tweather.rb'
-run Tweather
+require './pugvine.rb'
+run Pugvine
