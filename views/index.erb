@@ -7,11 +7,19 @@
 </head>
 
 <body>
-<ul class="puglist">
-<%= erb(:_vidlist, :layout => false) %>
-</ul>
 
-<a href="/look/<%= @thing %>/<%= @page += 1 %>">MORE!!!</a>
+<div class="wrap">
+  <% if @name['results'].size < 9 %>
+  <p class="morelink">No more :(</p>
+  <% else %>
+  <p class="morelink"><a href="/look/<%= @thing %>/<%= @page += 1 %>">MORE!!!</a></p>
+  <% end %>
+
+  <ul class="puglist">
+  <%= erb(:_vidlist, :layout => false) %>
+  </ul>
+</div>
+
 </html>
 
 

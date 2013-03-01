@@ -14,14 +14,14 @@ class Pugvine < Sinatra::Application
     erb :index, :locals => {:name => @name, :thing => @thing, :page => @page}
   end
 
-  get '/look/:thing' do
+  get '/look/:thing/?' do
     @page = 1
     @thing = params[:thing]
     @name = fetch_tweets(CGI::escape(params[:thing]))
     erb :index, :locals => {:name => @name, :page => @page}
   end
 
-  get '/look/:thing/:page' do
+  get '/look/:thing/:page/?' do
     @page = params[:page].to_i
     @thing = params[:thing]
     @name = fetch_tweets(CGI::escape(params[:thing]), params[:page])
