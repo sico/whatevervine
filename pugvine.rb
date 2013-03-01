@@ -11,6 +11,11 @@ class Pugvine < Sinatra::Application
     erb :index, :locals => {:name => @name}
   end
 
+  get '/look/:thing' do
+    @name = fetch_tweets(params[:thing])
+    erb :index, :locals => {:name => @name}
+  end
+
   get '/corgis' do
     @name = fetch_tweets('corgi')
     erb :index, :locals => {:name => @name}
