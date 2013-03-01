@@ -8,17 +8,10 @@
 
 <body>
 <ul class="puglist">
-<% name['results'].first(9).each do |item| %>
-  <li>
-    <iframe src="<%= item['entities']['urls'][0]['expanded_url'] %>/card" width="300" height="300" frameborder="0">
-      <p>Your browser does not support iframes.</p>
-    </iframe>
-    <div class="pug-info">
-      <%= item['text'] %>
-    </div>
-  </li>
-<% end %>
+<%= erb(:_vidlist, :layout => false) %>
 </ul>
+
+<a href="/look/<%= @thing %>/<%= @page += 1 %>">MORE!!!</a>
 </html>
 
 

@@ -3,30 +3,37 @@ require 'sinatra'
 require 'open-uri'
 require 'json'
 require 'less'
+require 'cgi'
 
 class Pugvine < Sinatra::Application
 
   get '/' do
+    @thing = 'pug'
+    @page = 1
     @name = fetch_tweets('pug')
-    erb :index, :locals => {:name => @name}
+    erb :index, :locals => {:name => @name, :thing => @thing, :page => @page}
   end
 
   get '/look/:thing' do
-    @name = fetch_tweets(params[:thing])
-    erb :index, :locals => {:name => @name}
+    @page = 1
+    @thing = params[:thing]
+    @name = fetch_tweets(CGI::escape(params[:thing]))
+    erb :index, :locals => {:name => @name, :page => @page}
   end
 
-  get '/corgis' do
-    @name = fetch_tweets('corgi')
-    erb :index, :locals => {:name => @name}
+  get '/look/:thing/:page' do
+    @page = params[:page].to_i
+    @thing = params[:thing]
+    @name = fetch_tweets(CGI::escape(params[:thing]), params[:page])
+    erb :index, :locals => {:name => @name, :page => @page}
   end
 
   get '/pugvine.css' do
     less :pugvine
   end
 
-  def fetch_tweets(term)
-    content = open("http://search.twitter.com/search.json?q=vine.co%20#{term}&rpp=9&result_type=recent&include_entities=true").read
+  def fetch_tweets(term, page=1)
+    content = open("http://search.twitter.com/search.json?q=vine.co%20#{term}&rpp=9&page=#{page}&result_type=recent&include_entities=true").read
     return @parsed = JSON.parse(content)
   end
 
