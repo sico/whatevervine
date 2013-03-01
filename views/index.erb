@@ -9,15 +9,19 @@
 <body>
 
 <div class="wrap">
-  <% if @name['results'].size < 9 %>
-  <p class="morelink">No more :(</p>
+  <% if @name['results'].size == 0 %>
+    <p class="novines">No vines for <%= @thing%>! Maybe check out some <a href="/look/pug">pugs</a>?</p>
   <% else %>
-  <p class="morelink"><a href="/look/<%= @thing %>/<%= @page += 1 %>">MORE!!!</a></p>
-  <% end %>
+    <% if @name['results'].size < 9 %>
+      <p class="morelink">No more :(</p>
+    <% else %>
+      <p class="morelink"><a href="/look/<%= @thing %>/<%= @page += 1 %>">MORE!!!</a></p>
+    <% end %>
 
-  <ul class="puglist">
-  <%= erb(:_vidlist, :layout => false) %>
-  </ul>
+    <ul class="puglist">
+      <%= erb(:_vidlist, :layout => false) %>
+    </ul>
+  <% end %>
 </div>
 
 </html>
