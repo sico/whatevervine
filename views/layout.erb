@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pugvine</title>
+  <link rel="stylesheet" type="text/css" href="/pugvine.css">
+  <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<header class="header">
+  <h1 class="h1"><%= @thing %>Vine</h1>
+</header>
+<div class="wrap">
+   <%= yield %>
+</div>
+<footer class="footer">
+<p>All videos from <a href="http://vine.co">Vine</a>. This site is just for fun, and not endorsed, affiliated with or approved by <a href="http://vine.co">Vine</a> in any way. Please don't sue me.</p>
+</footer>
+
+</body>
+</html>

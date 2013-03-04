@@ -7,11 +7,18 @@ require 'cgi'
 
 class Pugvine < Sinatra::Application
 
+  # Make LESS @import statements work
+  Less.paths << settings.views
+
   get '/' do
     @thing = 'pug'
     @page = 1
     @name = fetch_tweets('pug')
-    erb :index, :locals => {:name => @name, :thing => @thing, :page => @page}
+    erb :index, :locals => {:name => @name, :thing => @thing, :page => @page}, :layout => true
+  end
+
+  get '/blank/?' do
+    erb :blankpage, :layout => true
   end
 
   get '/look/:thing/?' do
@@ -30,6 +37,11 @@ class Pugvine < Sinatra::Application
 
   get '/pugvine.css' do
     less :pugvine
+  end
+
+  post '/find' do
+    @term = params['term']
+    redirect to('/look/' + @term)
   end
 
   def fetch_tweets(term, page=1)

@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Pugvine</title>
-  <link rel="stylesheet" type="text/css" href="/pugvine.css">
-</head>
+  <section class="left">
+    <form action="/find" method="post" accept-charset="utf-8" class="searchform">
+      <input name="term" placeholder="Search for something cute" class="input text" id="term" />
+      <button type="submit" class="submit btn">Go!</button>
+    </form>
 
-<body>
-
-<div class="wrap">
-  <% if @name['results'].size == 0 %>
-    <p class="novines">No vines for <%= @thing%>! Maybe check out some <a href="/look/pug">pugs</a>?</p>
-  <% else %>
     <% if @name['results'].size < 9 %>
-      <p class="morelink">No more :(</p>
+      <p class="morelink">No more <%= @thing %> :(</p>
     <% else %>
-      <p class="morelink"><a href="/look/<%= @thing %>/<%= @page += 1 %>">MORE!!!</a></p>
+      <p class="morelink"><a href="/look/<%= @thing %>/<%= @page += 1 %>">Show me more <%= @thing %>!</a></p>
     <% end %>
-
-    <ul class="puglist">
-      <%= erb(:_vidlist, :layout => false) %>
-    </ul>
-  <% end %>
-</div>
-
-</html>
-
-
+  </section>
+  <section class="right">
+    <% if @name['results'].size == 0 %>
+      <p class="novines">No vines for <%= @thing%>! Maybe check out some <a href="/look/pug">pugs</a>?</p>
+    <% else %>
+      <ul class="puglist">
+        <%= erb(:_vidlist, :layout => false) %>
+      </ul>
+    <% end %>
+  </section>
