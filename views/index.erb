@@ -1,4 +1,7 @@
   <section class="left">
+
+    <p class="explainer">Want to look at Vines of cool stuff? Sure you do. Whatevervine is a way to easily view some vines of, you know, whatever. Just search below! I've started you out with pugs, because why wouldn't I? Have fun.</p>
+
     <form action="/find" method="post" accept-charset="utf-8" class="searchform">
       <input name="term" placeholder="Search for something cute" class="input text" id="term" />
       <button type="submit" class="submit btn">Go!</button>
@@ -12,7 +15,7 @@
   </section>
   <section class="right">
     <% if @name['results'].size == 0 %>
-      <p class="novines">No vines for <%= @thing%>! Maybe check out some <a href="/look/pug">pugs</a>?</p>
+      <p class="novines">No vines for <%= @thing %>! Maybe check out some <a href="/look/pug">pugs</a>?</p>
     <% else %>
       <ul class="puglist">
         <%= erb(:_vidlist, :layout => false) %>
