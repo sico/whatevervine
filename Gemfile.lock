@@ -6,6 +6,7 @@ GEM
     less (2.2.1)
       commonjs (~> 0.2.6)
     libv8 (3.3.10.4)
+    newrelic_rpm (3.3.5)
     rack (1.5.2)
     rack-protection (1.3.2)
       rack
@@ -23,6 +24,7 @@ PLATFORMS
 DEPENDENCIES
   json
   less
+  newrelic_rpm
   rack
   sinatra
   therubyracer
