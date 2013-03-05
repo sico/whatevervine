@@ -12,6 +12,12 @@
     <% else %>
       <p class="morelink"><a href="/look/<%= @thing %>/<%= @page += 1 %>">Show me more <%= @thing %>!</a></p>
     <% end %>
+
+    <ul class="social">
+      <li><div class="fb-like" data-href="http://www.whatevervine.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div></li>
+      <li><a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="http://www.whatevervine.com" data-text="I'm looking at cool vines on whatevervine.com" data-counturl="http://www.whatevervine.com">Tweet</a></li>
+    </ul>
+
   </section>
   <section class="right">
     <% if @name['results'].size == 0 %>
