@@ -41,7 +41,7 @@ class Pugvine < Sinatra::Application
 
   post '/find' do
     @term = params['term']
-    redirect to('/look/' + @term)
+    redirect to('/look/' + CGI::escape(@term))
   end
 
   def fetch_tweets(term, page=1)
