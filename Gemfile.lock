@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     commonjs (0.2.6)
     json (1.7.7)
@@ -7,6 +7,7 @@ GEM
       commonjs (~> 0.2.6)
     libv8 (3.3.10.4)
     newrelic_rpm (3.3.5)
+    oauth (0.4.7)
     rack (1.5.2)
     rack-protection (1.3.2)
       rack
@@ -25,6 +26,7 @@ DEPENDENCIES
   json
   less
   newrelic_rpm
+  oauth
   rack
   sinatra
   therubyracer

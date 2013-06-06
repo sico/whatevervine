@@ -1,10 +1,10 @@
-<% @name['results'].first(9).each do |item| %>
+<% @results['statuses'].first(9).each do |item| %>
   <li>
     <iframe src="<%= item['entities']['urls'][0]['expanded_url'] %>/card" width="200" height="200" frameborder="0">
       <p>Your browser does not support iframes.</p>
     </iframe>
     <div class="pug-info">
-      <p>@<%= item['from_user'] %> - <%= item['text'] %></p>
+      <p>@<%= item['user']['screen_name'] %> - <%= item['text'] %></p>
     </div>
   </li>
 <% end %>
